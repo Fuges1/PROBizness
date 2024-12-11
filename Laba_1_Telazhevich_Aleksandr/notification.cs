@@ -69,7 +69,7 @@ namespace PROBizness
 
             connctSQL3.ShowCloseButton = false;
 
-            // connctSQL3.Popup();
+            connctSQL3.Popup();
         }
         public void DelTable()
         {
@@ -87,7 +87,7 @@ namespace PROBizness
 
             connctSQL4.ShowCloseButton = false;
 
-            // connctSQL4.Popup();
+            connctSQL4.Popup();
         }
     }
 }
