@@ -55,7 +55,8 @@ namespace PROBizness
                 connection.Open();
 
                 // SQL-команда для создания таблицы
-                string query = ($@"CREATE TABLE `csharp_users_db`.`{table}`;");
+                string query = ($@"CREATE TABLE `csharp_users_db`.`{table}`(
+    id INT AUTO_INCREMENT PRIMARY KEY);");
           
 
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -63,7 +64,7 @@ namespace PROBizness
                 // Выполняем команду
                 command.ExecuteNonQuery();
 
-                notification.DelTable();
+                notification.AddTabl();
             }
             catch (Exception ex)
             {
@@ -87,7 +88,7 @@ namespace PROBizness
                 // Выполнение команды
                 command.ExecuteNonQuery();
 
-                MessageBox.Show($"Таблица '{tableName}' успешно удалена.");
+                notification.AddTabl(); 
             }
             catch (Exception ex)
             {
