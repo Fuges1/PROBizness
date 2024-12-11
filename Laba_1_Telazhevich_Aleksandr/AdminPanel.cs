@@ -88,7 +88,7 @@ namespace PROBizness
                 // Выполнение команды
                 command.ExecuteNonQuery();
 
-                notification.AddTabl(); 
+                notification.DelTable(); 
             }
             catch (Exception ex)
             {

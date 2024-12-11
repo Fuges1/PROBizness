@@ -14,8 +14,8 @@ namespace PROBizness
     {
         private PopupNotifier conectSQL = null;
         private PopupNotifier connctSQL2 = null;
-        private PopupNotifier connctSQL3 = null;
-        private PopupNotifier connctSQL4 = null;
+        private PopupNotifier AddTable = null;
+        private PopupNotifier Deltable = null;
         public void conNO()
         {
             conectSQL = new PopupNotifier();
@@ -55,39 +55,39 @@ namespace PROBizness
         }
         public void AddTabl()
         {
-            connctSQL3 = new PopupNotifier();
+            AddTable = new PopupNotifier();
 
-            connctSQL3.Image = Properties.Resources.Ok;
+            AddTable.Image = Properties.Resources.Ok;
 
-            connctSQL3.ImageSize = new Size(96, 96);
+            AddTable.ImageSize = new Size(96, 96);
 
-            connctSQL3.TitleColor = Color.Azure;
+            AddTable.TitleColor = Color.Azure;
 
-            connctSQL3.TitleText = "Редактирование БД";
+            AddTable.TitleText = "Редактирование БД";
 
-            connctSQL3.ContentText = "Таблица добавленна успешно";
+            AddTable.ContentText = "Таблица добавленна успешно";
 
-            connctSQL3.ShowCloseButton = false;
+            AddTable.ShowCloseButton = false;
 
-            connctSQL3.Popup();
+            AddTable.Popup();
         }
         public void DelTable()
         {
-            connctSQL4 = new PopupNotifier();
+            Deltable = new PopupNotifier();
 
-            connctSQL4.Image = Properties.Resources.Ok;
+            Deltable.Image = Properties.Resources.Ok;
 
-            connctSQL4.ImageSize = new Size(96, 96);
+            Deltable.ImageSize = new Size(96, 96);
 
-            connctSQL4.TitleColor = Color.Azure;
+            Deltable.TitleColor = Color.Azure;
 
-            connctSQL4.TitleText = "Редактирование БД";
+            Deltable.TitleText = "Редактирование БД";
 
-            connctSQL4.ContentText = "Удаление таблицы успешно";
+            Deltable.ContentText = "Удаление таблицы успешно";
 
-            connctSQL4.ShowCloseButton = false;
+            Deltable.ShowCloseButton = false;
 
-            connctSQL4.Popup();
+            Deltable.Popup();
         }
     }
 }
