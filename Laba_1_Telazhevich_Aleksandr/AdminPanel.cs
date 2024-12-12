@@ -18,6 +18,8 @@ namespace PROBizness
         private MySqlConnection connection = new MySqlConnection("server=localhost; port=3306; username=root; password=; database=csharp_users_db; ");
         private string selectedTable;
         private notification notification = new notification();
+        private string column;
+        private System.Windows.Forms.Panel panel3;
         public AdminPanel()
         {
             InitializeComponent();
@@ -28,9 +30,9 @@ namespace PROBizness
             try
             {
                 string table = Input.Text;
-                if (table != null|| table == "" || table == " ")
+                if (table != null || table == "" || table == " ")
                 {
-                    
+
                     AddTable(table);
                     Listtables listtables = new Listtables();
                     listtables.LoadTablesToListBox();
@@ -40,13 +42,13 @@ namespace PROBizness
                 {
 
                 }
-               
+
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException ex)
             {
                 MessageBox.Show("Напишите название таблицы которую надо создать. Ошибка: " + ex.Message);
             }
-            
+
         }
         private void AddTable(string table)
         {
@@ -55,9 +57,8 @@ namespace PROBizness
                 connection.Open();
 
                 // SQL-команда для создания таблицы
-                string query = ($@"CREATE TABLE `csharp_users_db`.`{table}`(
-    id INT AUTO_INCREMENT PRIMARY KEY);");
-          
+                string query = ($@"CREATE TABLE `csharp_users_db`.`{table}`({column});");
+
 
                 MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -75,11 +76,15 @@ namespace PROBizness
                 connection.Close();
             }
         }
+        private void Column()
+        {
+
+        }
         private void DeleteTable(string tableName)
         {
             try
             {
-              
+
 
                 // SQL-команда для удаления таблицы
                 string query = $"DROP TABLE IF EXISTS `{tableName}`;";
@@ -88,7 +93,7 @@ namespace PROBizness
                 // Выполнение команды
                 command.ExecuteNonQuery();
 
-                notification.DelTable(); 
+                notification.DelTable();
             }
             catch (Exception ex)
             {
@@ -102,9 +107,9 @@ namespace PROBizness
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedTable = listBox1.SelectedItem.ToString(); // Получаем имя выбранной таблицы
-         
+
         }
-          
+
 
 
         private void LoadList()
@@ -142,16 +147,16 @@ namespace PROBizness
             listBox1.Items.AddRange(tables.ToArray());
 
 
-        
 
 
 
-    }
-    private void AdminPanel_Load(object sender, EventArgs e)
-    {
-        LoadList();
-        
-    }
+
+        }
+        private void AdminPanel_Load(object sender, EventArgs e)
+        {
+            LoadList();
+
+        }
 
         private void buttonDelTabl_Click(object sender, EventArgs e)
         {
@@ -189,22 +194,37 @@ namespace PROBizness
             }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void AddControl(int Controlnumber)
         {
+            for (int i = 0; i < Controlnumber; i++)
+            {
+                Label label = new Label();
+                label.Text = $"Колонка {i + 1}";
+                label.AutoSize = true;
+
+                TextBox textBox = new TextBox();
+                textBox.Width = 100;
+
+                panel2.Controls.Add(label);
+                panel2.Controls.Add(textBox);
+            }
 
         }
 
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+       
+
+        
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
+            if (numericUpDown1.Value >= 1)
+            {
+                int number = Convert.ToInt32(numericUpDown1.Value);
+                AddControl(number);
+            }
         }
 
-        private void panel2_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
-        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

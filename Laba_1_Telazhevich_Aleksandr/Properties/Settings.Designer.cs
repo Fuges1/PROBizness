@@ -46,5 +46,14 @@ namespace PROBizness.Properties {
                 this["role"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Параметр {
+            get {
+                return ((string)(this["Параметр"]));
+            }
+        }
     }
 }
