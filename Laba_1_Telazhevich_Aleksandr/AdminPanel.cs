@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 
@@ -32,7 +33,7 @@ namespace PROBizness
                 string table = Input.Text;
                 if (table != null || table == "" || table == " ")
                 {
-
+                    
                     AddTable(table);
                     Listtables listtables = new Listtables();
                     listtables.LoadTablesToListBox();
@@ -57,7 +58,7 @@ namespace PROBizness
                 connection.Open();
 
                 // SQL-команда для создания таблицы
-                string query = ($@"CREATE TABLE `csharp_users_db`.`{table}`({column});");
+                string query = ($@"CREATE TABLE `csharp_users_db`.`{table}`{column};");
 
 
                 MySqlCommand command = new MySqlCommand(query, connection);
@@ -78,7 +79,8 @@ namespace PROBizness
         }
         private void Column()
         {
-
+            string namecolumn = "";
+            column = $"(`{namecolumn}` INT(1) BINARY AS (1) VIRTUAL COMMENT '1' , PRIMARY KEY (`1`)) ENGINE = InnoDB;";
         }
         private void DeleteTable(string tableName)
         {
@@ -196,19 +198,118 @@ namespace PROBizness
 
         private void AddControl(int Controlnumber)
         {
+            int top = 15;
+            string NameColumn;
             for (int i = 0; i < Controlnumber; i++)
             {
-                Label label = new Label();
-                label.Text = $"Колонка {i + 1}";
-                label.AutoSize = true;
+                
 
-                TextBox textBox = new TextBox();
-                textBox.Width = 100;
+                TextBox textBoxPanel1 = new TextBox();
+                textBoxPanel1.Top = top;
+                textBoxPanel1.Left = 5;
+                textBoxPanel1.Width = 100;
+                textBoxPanel1.Name = "textBoxPanel1" + i.ToString();
+                NameColumn = textBoxPanel1.Text;
+                TextBox textBoxPanel2 = new TextBox();
+                textBoxPanel2.Top = top;
+                textBoxPanel2.Left = 209;
+                textBoxPanel2.Width = 100;
+                textBoxPanel2.Name = "textBoxPanel2" + i.ToString();
+                TextBox textBoxPanel3 = new TextBox();
+                textBoxPanel3.Top = top;
+                textBoxPanel3.Left = 734;
+                textBoxPanel3.Width = 100;
+                textBoxPanel3.Name = "textBoxPanel3" + i.ToString();
+                TextBox textBoxPanel4 = new TextBox();
+                textBoxPanel4.Top = top;
+                textBoxPanel4.Left = 1261;
+                textBoxPanel4.Width = 100;
+                textBoxPanel4.Name = "textBoxPanel4" + i.ToString();
+                TextBox textBoxPanel5 = new TextBox();
+                textBoxPanel5.Top = top;
+                textBoxPanel5.Left = 1465;
+                textBoxPanel5.Width = 100;
+                textBoxPanel5.Name = "textBoxPanel5" + i.ToString();
+                ComboBox comboBoxPanel1 = new ComboBox();
+                comboBoxPanel1.Top = top;
+                comboBoxPanel1.Left = 107;
+                comboBoxPanel1.Width = 100;
+                comboBoxPanel1.Name = "textBoxPanel1" + i.ToString();
+                ComboBox comboBoxPanel2 = new ComboBox();
+                comboBoxPanel2.Top = top;
+                comboBoxPanel2.Left = 311;
+                comboBoxPanel2.Width = 100;
+                comboBoxPanel2.Name = "comboBoxPanel2" + i.ToString();
+                ComboBox comboBoxPanel3 = new ComboBox();
+                comboBoxPanel3.Top = top;
+                comboBoxPanel3.Left = 413;
+                comboBoxPanel3.Width = 100;
+                comboBoxPanel3.Name = "comboBoxPanel3" + i.ToString();
+                ComboBox comboBoxPanel4 = new ComboBox();
+                comboBoxPanel4.Top = top;
+                comboBoxPanel4.Left = 515;
+                comboBoxPanel4.Width = 100;
+                comboBoxPanel4.Name = "comboBoxPanel4" + i.ToString();
+                ComboBox comboBoxPanel5 = new ComboBox();
+                comboBoxPanel5.Top = top;
+                comboBoxPanel5.Left = 632;
+                comboBoxPanel5.Width = 100;
+                comboBoxPanel5.Name = "comboBoxPanel5" + i.ToString();
+                ComboBox comboboxPanel6 = new ComboBox();
+                comboboxPanel6.Top = top;
+                comboboxPanel6.Left = 851;
+                comboboxPanel6.Width = 100;
+                comboboxPanel6.Name = "comboboxPanel6" + i.ToString();
+                ComboBox comboBoxPanel7 = new ComboBox();
+                comboBoxPanel7.Top = top;
+                comboBoxPanel7.Left = 953;
+                comboBoxPanel7.Width = 100;
+                comboBoxPanel7.Name = "comboBoxPanel7" + i.ToString();
+                ComboBox comboBoxPanel8 = new ComboBox();
+                comboBoxPanel8.Top = top;
+                comboBoxPanel8.Left = 1055;
+                comboBoxPanel8.Width = 100;
+                comboBoxPanel8.Name = "comboBoxPanel8" + i.ToString();
+                ComboBox comboBoxPanel9 = new ComboBox();
+                comboBoxPanel9.Top = top;
+                comboBoxPanel9.Left = 1159;
+                comboBoxPanel9.Width = 100;
+                comboBoxPanel9.Name = "comboBoxPanel9" + i.ToString();
+                ComboBox comboBoxPanel10 = new ComboBox();
+                comboBoxPanel10.Top = top;
+                comboBoxPanel10.Left = 1363;
+                comboBoxPanel10.Width = 100;
+                comboBoxPanel10.Name = "comboBoxPanel10" + i.ToString();
+                CheckBox checkBoxPanel1 = new CheckBox();
+                checkBoxPanel1.Top = top;
+                checkBoxPanel1.Left = 617;
+                checkBoxPanel1.Name = "checkBoxPanel1" + i.ToString();
+                CheckBox checkBoxPanel2 = new CheckBox();
+                checkBoxPanel2.Top = top;
+                checkBoxPanel2.Left = 836;
+                checkBoxPanel2.Name = "checkBoxPanel2" + i.ToString();
 
-                panel2.Controls.Add(label);
-                panel2.Controls.Add(textBox);
+                panel2.Controls.Add(textBoxPanel1);
+                panel2.Controls.Add(textBoxPanel2);
+                panel2.Controls.Add(textBoxPanel3);
+                panel2.Controls.Add(textBoxPanel4);
+                panel2.Controls.Add(textBoxPanel5);
+                panel2.Controls.Add(comboBoxPanel1);
+                panel2.Controls.Add(comboBoxPanel2);
+                panel2.Controls.Add(comboBoxPanel3);
+                panel2.Controls.Add(comboBoxPanel4);
+                panel2.Controls.Add(comboBoxPanel5);
+                panel2.Controls.Add(comboboxPanel6);
+                panel2.Controls.Add(comboBoxPanel7);
+                panel2.Controls.Add(comboBoxPanel8);
+                panel2.Controls.Add(comboBoxPanel9);
+                panel2.Controls.Add(comboBoxPanel10);
+                panel2.Controls.Add(checkBoxPanel1);
+                panel2.Controls.Add(checkBoxPanel2);
+
+                top = top + 20;
             }
-
+       
         }
 
        
@@ -217,16 +318,22 @@ namespace PROBizness
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
-            if (numericUpDown1.Value >= 1)
-            {
-                int number = Convert.ToInt32(numericUpDown1.Value);
-                AddControl(number);
-            }
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (numericUpDown1.Value > 0)
+            {
+                panel2.Controls.Clear();
+                int number = Convert.ToInt32(numericUpDown1.Value);
+                AddControl(number);
+            }
         }
     }
 }
